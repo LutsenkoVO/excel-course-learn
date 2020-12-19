@@ -20,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/LutsenkoVO/excel-course-learn/issues"
   },
-  "homepage": "https://github.com/LutsenkoVO/excel-course-learn#readme"
+  "homepage": "https://github.com/LutsenkoVO/excel-course-learn#readme",
+  "private":"true"
 }
