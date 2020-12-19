@@ -1,0 +1,24 @@
+{
+  "name": "excelcourselearn",
+  "version": "1.0.0",
+  "description": "Pure JS Excel App",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LutsenkoVO/excel-course-learn.git"
+  },
+  "keywords": [
+    "js",
+    "javascript",
+    "excel"
+  ],
+  "author": "Lutsenko Vadym <lutsenko.v.o@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LutsenkoVO/excel-course-learn/issues"
+  },
+  "homepage": "https://github.com/LutsenkoVO/excel-course-learn#readme"
+}
