@@ -3,6 +3,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require("copy-webpack-plugin")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { Console } = require('console')
+
+const isProd = process.env.NODE_ENV === 'production'
+const isDev = !isProd
+
+console.log('IS PROD', isProd)
+console.log('IS DEV', isDev)
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
@@ -22,18 +29,41 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HTMLWebpackPlugin({
-           template: 'index.html' 
+            template: 'index.html'
         }),
-        new CopyPlugin([
-            {
-            patterns: 
-              { from: path.resolve(__dirname, 'src/favicon.ico'), 
-                to: path.resolve(__dirname, 'dist') 
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, 'src/favicon.ico'),
+                    to: path.resolve(__dirname, 'dist')
                 }
-            }
-        ]),
+            ]
+        }
+        ),
         new MiniCssExtractPlugin({
-           filename: 'bundle.[hash].css'
+            filename: 'bundle.[hash].css'
         })
-    ]
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "sass-loader",
+                ],
+            },
+            {
+                test: /\.m?js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            },
+        ],
+    }
 }
