@@ -5,8 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cross_env NODE_ENV=development webpack",
-    "build": "cross_env NODE_ENV=production webpack --mode production"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --open",
+    "build": "cross-env NODE_ENV=production webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -38,7 +38,8 @@
     "node-sass": "^5.0.0",
     "sass": "^1.30.0",
     "sass-loader": "^10.1.0",
-    "webpack": "^5.11.0",
-    "webpack-cli": "^4.2.0"
+    "webpack": "^5.0.0-rc.6",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
   }
 }
