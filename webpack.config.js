@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const isProd = process.env.NODE_ENV === 'production'
 const isDev = !isProd
 
-const filename = ext => isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`
+const filename = (ext) => isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`
 
 const jsLoaders = () => {
   const loaders = [
@@ -43,6 +43,9 @@ module.exports = {
   },
   devtool: isDev ? 'source-map' : false,
   devServer: {
+    open: {
+      app: ['chrome', '--incognito', '--other-flag']
+    },
     port: 3000,
     hot: isDev
   },
@@ -55,12 +58,13 @@ module.exports = {
         collapseWhitespace: isProd
       }
     }),
-    new CopyPlugin([
-      {
+    new CopyPlugin({
+      patterns: [{
         from: path.resolve(__dirname, 'src/favicon.ico'),
-        to: path.resolve(__dirname, 'dist')
-      }
-    ]),
+        to: path.resolve(__dirname, 'dist'),
+      }]
+    },
+    ),
     new MiniCssExtractPlugin({
       filename: filename('css')
     })
@@ -72,10 +76,6 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: isDev,
-              reloadAll: true
-            }
           },
           'css-loader',
           'sass-loader'
