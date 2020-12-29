@@ -44,7 +44,7 @@ module.exports = {
   devtool: isDev ? 'source-map' : false,
   devServer: {
     open: {
-      app: ['chrome', '--incognito', '--other-flag']
+      app: ['chrome']
     },
     port: 3000,
     hot: isDev
