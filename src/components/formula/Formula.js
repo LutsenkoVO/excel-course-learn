@@ -22,6 +22,6 @@ export class Formula extends ExcelComponent {
     }
 
     onClick() {
-        // realize
+        console.log('mk')
     }
 }
