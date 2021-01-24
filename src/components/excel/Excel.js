@@ -11,10 +11,6 @@ constructor(selector, options) {
         this.components = this.components.map(Component => {
             const $el = $.create('div', Component.className)
             const component = new Component($el)
-            //  Debug
-            // if (component.name) {
-            //    window['c' + component.name] = component
-            // }
             $el.html(component.toHTML())
             $root.append($el)
             return component
@@ -24,7 +20,6 @@ constructor(selector, options) {
 
     render() {
         console.log(this.$el)
-        // afterbegin, afterend, beforeend, beforebegin
         this.$el.append(this.getRoot())
 
         this.components.forEach(component => component.init())
