@@ -1,6 +1,6 @@
 import {$} from '@core/dom'
 
-export function resizeHendler($root, event) {
+export function resizeHandler($root, event) {
         const $resizer = $(event.target)
         const $parent = $resizer.closest('[data-type="resizeble"]')
         const coords = $parent.getCoords()
